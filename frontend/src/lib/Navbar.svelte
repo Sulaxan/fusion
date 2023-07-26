@@ -10,7 +10,7 @@
 	<input
 		type="text"
 		placeholder="Enter champion or player name..."
-		class="input bg-base-300 border-primary w-7/12 max-w-2xl"
+		class="input bg-base-300 border-primary w-7/12 max-w-2xl rounded-2xl"
 	/>
     <MiniProfile />
 </div>
