@@ -72,7 +72,7 @@
                 "minHeight": 600,
                 "resizable": true,
                 "title": "Fusion",
-                "decorations": true
+                "decorations": false
             }
         ]
     }

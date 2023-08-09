@@ -4,7 +4,8 @@
 
 <div
 	data-tauri-drag-region
-	class="titlebar select-none bg-primary sticky top-0 left-0 right-0 flex justify-end h-[40px]"
+	class="titlebar select-none bg-primary sticky top-0 left-0 right-0 flex justify-end h-[40px]
+    border-b border-b-base-300"
 >
 	<div
 		class="titlebar-button hover:bg-gray-100 hover:bg-opacity-20"
