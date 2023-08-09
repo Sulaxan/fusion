@@ -30,5 +30,6 @@ impl Emitter for StatusEmitter {
         let available = api.is_available().await;
 
         println!("available = {}", available);
+        //todo: emit this to all windows using handle.emit_all
     }
 }

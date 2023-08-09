@@ -20,12 +20,12 @@ async fn main() -> Result<()> {
         .with_context(|| "Could not build tauri app")?;
 
     // test
-    let lcu_api = Arc::new(RwLock::new(LcuApi::new()?));
-    let app_handle = Arc::new(app.handle());
-    event::start(
-        Arc::new(Mutex::new(StatusEmitter::new(lcu_api.clone()))),
-        app_handle,
-    );
+    // let lcu_api = Arc::new(RwLock::new(LcuApi::new()?));
+    // let app_handle = Arc::new(app.handle());
+    // event::start(
+    //     Arc::new(Mutex::new(StatusEmitter::new(lcu_api.clone()))),
+    //     app_handle,
+    // );
 
     // consumes app
     app.run(|_handle, _event| {});
