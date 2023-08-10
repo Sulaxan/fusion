@@ -1,6 +1,8 @@
 use std::{sync::Arc, time::Duration};
 
+use anyhow::Result;
 use async_trait::async_trait;
+use log::error;
 use tauri::AppHandle;
 use tokio::{
     sync::Mutex,
@@ -14,7 +16,7 @@ pub trait Emitter: Sync + Send {
     /// The interval for how often the event should be emitted.
     fn interval(&self) -> Duration;
     /// Called when an event should emit.
-    async fn emit(&self, handle: &AppHandle);
+    async fn emit(&self, handle: &AppHandle) -> Result<()>;
 }
 
 /// Starts an emitter by assigning it a new thread.
@@ -27,7 +29,9 @@ pub fn start<'a>(emitter: Arc<Mutex<dyn Emitter>>, app_handle: Arc<AppHandle>) {
         loop {
             interval.tick().await;
             let e = emitter.lock().await;
-            e.emit(&app_handle).await;
+            if let Err(e) = e.emit(&app_handle).await {
+                error!("Error emitting event: {}", e);
+            }
             drop(e);
         }
     });
